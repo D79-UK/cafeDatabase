@@ -12,7 +12,7 @@ using System.Data.SqlClient;
 
 namespace CafeDatabaseApplication
 {
-    public partial class cafeDatabaseMainForm : Form
+    public partial class DatabaseMainForm : Form
     {
 
         private SqlConnection connection = null;
@@ -28,7 +28,7 @@ namespace CafeDatabaseApplication
         private ComposeOrderForm composeOrderForm;
        // private Form2 form;
 
-        public cafeDatabaseMainForm(SqlConnection connection_)
+        public DatabaseMainForm(SqlConnection connection_)
         {
             // Connection to remote database is successfully opened and passed to form constructor
             connection = connection_;
@@ -56,7 +56,7 @@ namespace CafeDatabaseApplication
             }
         }
 
-        ~cafeDatabaseMainForm()
+        ~DatabaseMainForm()
         {
             //connection.Close();
         }

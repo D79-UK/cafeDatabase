@@ -9,13 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace CafeDatabaseApplication
 {
     public partial class ComposeOrderForm : Form
     {
         private int id_garcon;
         
-
         private SqlConnection connection = null;
         private Dictionary<string, SqlDataAdapter> adapters;
         private DataSet dataSets;
@@ -44,10 +44,13 @@ namespace CafeDatabaseApplication
                         adapters.Add(t, new SqlDataAdapter("SELECT * FROM " + t, connection));
                         adapters[t].Fill(dataSets, t);
                     }
-                    InitializeComponent();
-
-                    
-
+                    String query = "SELECT a.title, a.id, a.price, aa.quantity FROM available_assortiments aa, assortiments a WHERE aa.id_assortiment = a.id AND aa.id_cafe = (SELECT id_cafe FROM garcons WHERE id = 2);";
+                    //SqlCommand command = new SqlCommand(query, this.connection);
+                    //SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    //DataSet dataset = new DataSet();
+                    //adapter.Fill(dataset, "AvailableAssesories");
+                    adapters.Add("AvailableAssesories", new SqlDataAdapter(query, connection));
+                    adapters["AvailableAssesories"].Fill(dataSets, "AvailableAssesories");
                 }
             }
             catch (Exception ex)
@@ -56,27 +59,67 @@ namespace CafeDatabaseApplication
             }
             
             InitializeComponent();
-            
+
+            try
+            {
+                int n = dataSets.Tables["AvailableAssesories"].Rows.Count;
+
+                
+                for (int i = 0; i < n; i++)
+                {
+                    Image myImage = Image.FromFile(@"..\..\Images\image" + (i+1) + ".jpg");
+                    // listBox1.Items.Add(new ListBoxItem(dataSets.Tables["AvailableAssesories"].Rows[i].Field<String>("title"), dataSets.Tables["AvailableAssesories"].Rows[i].Field<int>("id") ));
+                    String description;
+                    description = " Price for 1 piece : " + dataSets.Tables["AvailableAssesories"].Rows[i].Field<Double>("price");
+                    listBox1.Items.Add(
+                        new exListBoxItem(i, 
+                            dataSets.Tables["AvailableAssesories"].Rows[i].Field<String>("title"),
+                            description, 
+                            myImage)
+                        );
+                   
+                }               
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Faild to populate list box. Error message : "+ ex.Message);
+            }
+
         }
 
-        private void OnLoad(object sender, EventArgs e)
+        private void ComposeOrderForm_Load(object sender, EventArgs e)
         {
-            String query = "SELECT a.title, a.id, a.price, aa.quantity FROM available_assortiments aa, assortiments a WHERE aa.id_assortiment = a.id AND aa.id_cafe = (SELECT id_cafe FROM garcons WHERE id = 2);";
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            SqlCommand command = new SqlCommand(query, connection);
-            command.CommandType = CommandType.Text;
-            adapter.SelectCommand = command;
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
-            dataGridView1.DataSource = dt;
-            dataGridView1.Visible = true;
-            dataGridView1.Enabled = true;
-            dataGridView1.AutoGenerateColumns = true;            
+            
+
+
+            //listBox1.DataSource = dataSets.Tables["AvailableAssesories"];
+            /*
+            dataGridView1.Columns.Clear();
+            dataGridView1.AutoGenerateColumns = true;
+            //BindingSource bs = new BindingSource();
+            //bs.DataSource = 
+            dataGridView1.DataSource = 
+            dataGridView1.Refresh();
+
+            MessageBox.Show("Here is " + dataSets.Tables["AvailableAssesories"].Rows.Count + " rows");
+            */
+/*            dataGridView1.Visible = true;
+            dataGridView1.Enabled = true;          
+            */
         }
 
         private void AddButton_Click(object sender, EventArgs e)
         {
+            this.Text = ((exListBoxItem)listBox1.SelectedItem).Id.ToString();
+        }
 
+        private void exListBox1_DrawItem(object sender, DrawItemEventArgs e)
+        {
+        }
+
+        private void exListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.Text = ((exListBoxItem)listBox1.SelectedItem).Id.ToString();
         }
     }
 }

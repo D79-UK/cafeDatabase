@@ -59,6 +59,10 @@
     <Compile Include="AppMainForm.Designer.cs">
       <DependentUpon>AppMainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="exListBox.cs" />
+    <Compile Include="exListBox.designer.cs">
+      <DependentUpon>exListBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ComposeOrderForm.resx">

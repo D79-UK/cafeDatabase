@@ -19,7 +19,7 @@ namespace CafeDatabaseApplication
                 {
                     Application.EnableVisualStyles();
                     Application.SetCompatibleTextRenderingDefault(false);                    
-                    Application.Run(new cafeDatabaseMainForm(connection));
+                    Application.Run(new DatabaseMainForm(connection));
                 }
                 // it is up to main form to closed connection
                 connection.Close();
