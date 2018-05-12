@@ -58,27 +58,39 @@ namespace CafeDatabaseApplication
 
         ~DatabaseMainForm()
         {
-            //connection.Close();
+            connection.Close();
         }
 
         private void cafeDatabaseMainForm_Load(object sender, EventArgs e)
         {
-            /* Link data to grid view components 
-            * */
-            cafeDataGridView.DataSource = dataSets.Tables["cafes"];
-          
-            garconDataGridView.DataSource = dataSets.Tables["garcons"];
-            assortimentGridView.DataSource = dataSets.Tables["assortiments"];
+           
+            bindingSource1.DataSource = dataSets.Tables["cafes"];
+            cafeDataGridView.DataSource = bindingSource1;
+            bindingNavigator1.BindingSource = bindingSource1;
+       
+            bindingSource2.DataSource = dataSets.Tables["garcons"];
+            garconDataGridView.DataSource = bindingSource2;
+            bindingNavigator2.BindingSource = bindingSource2;
 
-            cafeDataGridView.Columns[0].Name="#";
-            cafeDataGridView.Columns[0].Width = 40;
-            cafeDataGridView.Columns[1].Name="Title";
-            cafeDataGridView.Columns[1].Width = 200;
-            /*
-            bindingNavigator1.BindingSource.DataSource = dataSets.Tables["cafes"];
-            bindingNavigator2.BindingSource.DataSource = dataSets.Tables["garcons"];
-            bindingNavigator3.BindingSource.DataSource = dataSets.Tables["assortiments"];
-            */
+            bindingSource3.DataSource = dataSets.Tables["assortiments"];
+            assortimentGridView.DataSource = bindingSource3;
+            bindingNavigator3.BindingSource = bindingSource3;
+
+
+            SqlConnection con = new SqlConnection("server = MUNESH;Database=datastore;UID=sa;Password=123;");
+            SqlCommand cmd = new SqlCommand("SELECT title, price FROM assortiments ORDER BY price DESC", this.connection);
+            SqlDataReader datareader;
+            try{
+                datareader = cmd.ExecuteReader();
+                while (datareader.Read()){
+                    this.chart1.Series["AssortimentPrice"].Points.AddXY( datareader.GetString(0), datareader.GetDouble(1) );
+                }
+            }catch(Exception ex){
+                MessageBox.Show(ex.Message);
+            }
+
+
+
             /*
             // Create a map control.
             MapControl map = new MapControl();
@@ -105,9 +117,7 @@ namespace CafeDatabaseApplication
 
         private void orderProductsButton_Click(object sender, EventArgs e)
         {
-            /*
-             * Order Products
-             * */
+
         }
 
         private void composeOrderButton_Click(object sender, EventArgs e)
@@ -116,6 +126,7 @@ namespace CafeDatabaseApplication
             
             int id_garcon = 1;
             String id_g_str = this.garconDataGridView.CurrentRow.Cells[0].ToString();
+            MessageBox.Show("Happy garcon: <" + id_g_str+">");
             id_garcon = Convert.ToInt32("2");
 
            // MessageBox.Show("Happy garcon: " + id_garcon);
@@ -204,6 +215,13 @@ namespace CafeDatabaseApplication
             SqlCommandBuilder builder = new SqlCommandBuilder(adapters["assortiments"]);
             adapters["assortiments"].UpdateCommand = builder.GetUpdateCommand();
             adapters["assortiments"].Update(dataSets.Tables["assortiments"]);
+        }
+
+        private void orderProductsButtonControll_Click(object sender, EventArgs e)
+        {
+            /*
+ * Order Products
+ * */
         }
     }//[end] class cafeDatabaseMainForm
 }//[end] namespace CafeDatabaseApplication

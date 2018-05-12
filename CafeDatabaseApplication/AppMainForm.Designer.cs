@@ -30,11 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DatabaseMainForm));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.orderProductsButtonControll = new System.Windows.Forms.Button();
             this.cafeDataGridView = new System.Windows.Forms.DataGridView();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -45,7 +50,6 @@
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.orderProductsButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.updateCafeTableButton = new System.Windows.Forms.ToolStripButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -79,11 +83,19 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
             this.assortimentGridView = new System.Windows.Forms.DataGridView();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingSource3 = new System.Windows.Forms.BindingSource(this.components);
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cafeDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator2)).BeginInit();
             this.bindingNavigator2.SuspendLayout();
@@ -92,6 +104,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator3)).BeginInit();
             this.bindingNavigator3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.assortimentGridView)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource3)).BeginInit();
+            this.tabControl2.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -99,43 +117,57 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tabControl1.Location = new System.Drawing.Point(0, 54);
+            this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(634, 284);
+            this.tabControl1.Size = new System.Drawing.Size(1070, 597);
             this.tabControl1.TabIndex = 4;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.orderProductsButtonControll);
             this.tabPage1.Controls.Add(this.cafeDataGridView);
             this.tabPage1.Controls.Add(this.bindingNavigator1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(626, 258);
+            this.tabPage1.Size = new System.Drawing.Size(1062, 571);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Кафе";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // orderProductsButtonControll
+            // 
+            this.orderProductsButtonControll.Location = new System.Drawing.Point(717, 497);
+            this.orderProductsButtonControll.Name = "orderProductsButtonControll";
+            this.orderProductsButtonControll.Size = new System.Drawing.Size(337, 23);
+            this.orderProductsButtonControll.TabIndex = 5;
+            this.orderProductsButtonControll.Text = "Замовити продукцію на локальний склад в кафе";
+            this.orderProductsButtonControll.UseVisualStyleBackColor = true;
+            this.orderProductsButtonControll.Click += new System.EventHandler(this.orderProductsButtonControll_Click);
             // 
             // cafeDataGridView
             // 
             this.cafeDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.cafeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.cafeDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cafeDataGridView.Dock = System.Windows.Forms.DockStyle.Top;
             this.cafeDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.cafeDataGridView.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.cafeDataGridView.Location = new System.Drawing.Point(3, 28);
+            this.cafeDataGridView.Location = new System.Drawing.Point(3, 3);
             this.cafeDataGridView.Name = "cafeDataGridView";
-            this.cafeDataGridView.Size = new System.Drawing.Size(620, 227);
+            this.cafeDataGridView.Size = new System.Drawing.Size(1056, 476);
             this.cafeDataGridView.TabIndex = 4;
             // 
             // bindingNavigator1
             // 
             this.bindingNavigator1.AddNewItem = this.bindingNavigatorAddNewItem;
+            this.bindingNavigator1.BindingSource = this.bindingSource1;
             this.bindingNavigator1.CountItem = this.bindingNavigatorCountItem;
             this.bindingNavigator1.DeleteItem = this.bindingNavigatorDeleteItem;
+            this.bindingNavigator1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.bindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bindingNavigatorMoveFirstItem,
             this.bindingNavigatorMovePreviousItem,
@@ -148,17 +180,16 @@
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
-            this.orderProductsButton,
             this.toolStripSeparator1,
             this.updateCafeTableButton});
-            this.bindingNavigator1.Location = new System.Drawing.Point(3, 3);
+            this.bindingNavigator1.Location = new System.Drawing.Point(3, 543);
             this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
             this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(620, 25);
+            this.bindingNavigator1.Size = new System.Drawing.Size(1056, 25);
             this.bindingNavigator1.TabIndex = 3;
             this.bindingNavigator1.Text = "bindingNavigator1";
             // 
@@ -247,14 +278,6 @@
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // orderProductsButton
-            // 
-            this.orderProductsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.orderProductsButton.Name = "orderProductsButton";
-            this.orderProductsButton.Size = new System.Drawing.Size(91, 22);
-            this.orderProductsButton.Text = "Order Products";
-            this.orderProductsButton.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -278,7 +301,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(626, 258);
+            this.tabPage2.Size = new System.Drawing.Size(1062, 571);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Офіціанти";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -288,6 +311,7 @@
             this.bindingNavigator2.AddNewItem = this.bindingNavigatorAddNewItem1;
             this.bindingNavigator2.CountItem = this.bindingNavigatorCountItem1;
             this.bindingNavigator2.DeleteItem = this.bindingNavigatorDeleteItem1;
+            this.bindingNavigator2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.bindingNavigator2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bindingNavigatorMoveFirstItem1,
             this.bindingNavigatorMovePreviousItem1,
@@ -302,14 +326,14 @@
             this.bindingNavigatorDeleteItem1,
             this.composeOrderButton,
             this.toolStripButton1});
-            this.bindingNavigator2.Location = new System.Drawing.Point(3, 3);
+            this.bindingNavigator2.Location = new System.Drawing.Point(3, 543);
             this.bindingNavigator2.MoveFirstItem = this.bindingNavigatorMoveFirstItem1;
             this.bindingNavigator2.MoveLastItem = this.bindingNavigatorMoveLastItem1;
             this.bindingNavigator2.MoveNextItem = this.bindingNavigatorMoveNextItem1;
             this.bindingNavigator2.MovePreviousItem = this.bindingNavigatorMovePreviousItem1;
             this.bindingNavigator2.Name = "bindingNavigator2";
             this.bindingNavigator2.PositionItem = this.bindingNavigatorPositionItem1;
-            this.bindingNavigator2.Size = new System.Drawing.Size(620, 25);
+            this.bindingNavigator2.Size = new System.Drawing.Size(1056, 25);
             this.bindingNavigator2.TabIndex = 1;
             this.bindingNavigator2.Text = "bindingNavigator2";
             // 
@@ -421,10 +445,10 @@
             // garconDataGridView
             // 
             this.garconDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.garconDataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.garconDataGridView.Location = new System.Drawing.Point(3, 31);
+            this.garconDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.garconDataGridView.Location = new System.Drawing.Point(3, 3);
             this.garconDataGridView.Name = "garconDataGridView";
-            this.garconDataGridView.Size = new System.Drawing.Size(620, 224);
+            this.garconDataGridView.Size = new System.Drawing.Size(1056, 565);
             this.garconDataGridView.TabIndex = 0;
             // 
             // tabPage3
@@ -434,7 +458,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(626, 258);
+            this.tabPage3.Size = new System.Drawing.Size(1062, 571);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Асортимент";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -445,6 +469,7 @@
             this.bindingNavigator3.AddNewItem = this.toolStripButton2;
             this.bindingNavigator3.CountItem = this.toolStripLabel1;
             this.bindingNavigator3.DeleteItem = this.toolStripButton3;
+            this.bindingNavigator3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.bindingNavigator3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton4,
             this.toolStripButton5,
@@ -458,14 +483,14 @@
             this.toolStripButton2,
             this.toolStripButton3,
             this.toolStripButton9});
-            this.bindingNavigator3.Location = new System.Drawing.Point(3, 3);
+            this.bindingNavigator3.Location = new System.Drawing.Point(3, 543);
             this.bindingNavigator3.MoveFirstItem = this.toolStripButton4;
             this.bindingNavigator3.MoveLastItem = this.toolStripButton7;
             this.bindingNavigator3.MoveNextItem = this.toolStripButton6;
             this.bindingNavigator3.MovePreviousItem = this.toolStripButton5;
             this.bindingNavigator3.Name = "bindingNavigator3";
             this.bindingNavigator3.PositionItem = this.toolStripTextBox1;
-            this.bindingNavigator3.Size = new System.Drawing.Size(620, 25);
+            this.bindingNavigator3.Size = new System.Drawing.Size(1056, 25);
             this.bindingNavigator3.TabIndex = 3;
             this.bindingNavigator3.Text = "bindingNavigator3";
             // 
@@ -567,20 +592,79 @@
             // assortimentGridView
             // 
             this.assortimentGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.assortimentGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.assortimentGridView.Location = new System.Drawing.Point(3, 31);
+            this.assortimentGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.assortimentGridView.Location = new System.Drawing.Point(3, 3);
             this.assortimentGridView.Name = "assortimentGridView";
-            this.assortimentGridView.Size = new System.Drawing.Size(620, 224);
+            this.assortimentGridView.Size = new System.Drawing.Size(1056, 565);
             this.assortimentGridView.TabIndex = 2;
             // 
-            // cafeDatabaseMainForm
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.tabControl2);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(1062, 571);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Статистика";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // tabControl2
+            // 
+            this.tabControl2.Controls.Add(this.tabPage5);
+            this.tabControl2.Controls.Add(this.tabPage6);
+            this.tabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl2.Location = new System.Drawing.Point(3, 3);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(1056, 565);
+            this.tabControl2.TabIndex = 0;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.chart1);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(1048, 539);
+            this.tabPage5.TabIndex = 0;
+            this.tabPage5.Text = "Ціни";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(1048, 539);
+            this.tabPage6.TabIndex = 1;
+            this.tabPage6.Text = "tabPage6";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(20, 18);
+            this.chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "AssortimentPrice";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(525, 314);
+            this.chart1.TabIndex = 1;
+            this.chart1.Text = "chart1";
+            // 
+            // DatabaseMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(634, 338);
+            this.ClientSize = new System.Drawing.Size(1070, 597);
             this.Controls.Add(this.tabControl1);
-            this.Name = "cafeDatabaseMainForm";
+            this.Name = "DatabaseMainForm";
             this.Text = "Cafe database desktop application v.0.0.1";
             this.Load += new System.EventHandler(this.cafeDatabaseMainForm_Load);
             this.tabControl1.ResumeLayout(false);
@@ -590,6 +674,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator2)).EndInit();
@@ -602,6 +687,12 @@
             this.bindingNavigator3.ResumeLayout(false);
             this.bindingNavigator3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.assortimentGridView)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource3)).EndInit();
+            this.tabControl2.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -624,7 +715,6 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
-        private System.Windows.Forms.ToolStripButton orderProductsButton;
         private System.Windows.Forms.TabPage tabPage2;
         
         private System.Windows.Forms.BindingNavigator bindingNavigator2;
@@ -659,6 +749,15 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton toolStripButton9;
         private System.Windows.Forms.DataGridView assortimentGridView;
+        private System.Windows.Forms.Button orderProductsButtonControll;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.BindingSource bindingSource2;
+        private System.Windows.Forms.BindingSource bindingSource3;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.TabPage tabPage6;
     }
 }
 
