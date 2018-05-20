@@ -1,0 +1,1 @@
+﻿SELECT g.name, ord.amount FROM garcons g, orders ord WHERE ord.id_garcon = g.id;

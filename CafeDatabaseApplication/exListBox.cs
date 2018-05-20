@@ -32,16 +32,23 @@ int id = selected.Id;
         private string _details;
         private Image _itemImage;
         private int _id;
+        private double _price;
 
         public int Id
         {
             get { return _id; }
             set { _id = value; }
         }
+        public double Price
+        {
+            get { return _price; }
+            set { _price = value; }
+        }
 
-        public exListBoxItem(int id, string title, string details, Image image)
+        public exListBoxItem(int id, string title, string details, double price, Image image)
         {
             _id = id;
+            _price = price;
             _title = title;
             _details = details;
             _itemImage = image;

@@ -109,6 +109,38 @@ namespace CafeDatabaseApplication
                 MessageBox.Show(ex.Message);
             }
 
+            SqlCommand cmd3 = new SqlCommand("SELECT g.name, SUM(ord.amount) FROM garcons g, orders ord WHERE ord.id_garcon = g.id GROUP BY g.name", this.connection);
+            SqlDataReader datareader3;
+            try
+            {
+                datareader3 = cmd3.ExecuteReader();
+                while (datareader3.Read())
+                {
+                    this.chart3.Series["OrderAmount"].Points.AddXY(datareader3.GetString(0), datareader3.GetDouble(1));
+                }
+                datareader3.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+            SqlCommand cmd4 = new SqlCommand("SELECT a.title, COUNT(ord.id_assortiment) FROM assortiments a, ordered_assortiments ord WHERE a.id = ord.id_assortiment GROUP BY a.title", this.connection);
+            SqlDataReader datareader4;
+            try
+            {
+                datareader4 = cmd4.ExecuteReader();
+                while (datareader4.Read())
+                {
+                    this.chart4.Series["OrderNum"].Points.AddXY(datareader4.GetString(0), datareader4.GetInt32(1));
+                }
+                datareader4.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             /*
             // Create a map control.
             MapControl map = new MapControl();
@@ -140,18 +172,23 @@ namespace CafeDatabaseApplication
 
         private void composeOrderButton_Click(object sender, EventArgs e)
         {
-          
-            
-            int id_garcon = 1;
-            String id_g_str = this.garconDataGridView.CurrentRow.Cells[1].ToString();
-            //MessageBox.Show("Happy garcon: <" + id_g_str+">");
-            id_garcon = Convert.ToInt32("2");
 
-           // MessageBox.Show("Happy garcon: " + id_garcon);
+            int selectedCount =  this.garconDataGridView.Rows.GetRowCount(DataGridViewElementStates.Selected);
+            if (selectedCount > 0)
+            {
+                int rowIndex = this.garconDataGridView.SelectedRows[0].Index;
+                DataGridViewRow row = this.garconDataGridView.Rows[rowIndex];
+                int id_garcon = 1;
+                String id_g_str = row.Cells[0].Value.ToString();
+                id_garcon = Convert.ToInt32(id_g_str);
 
-            composeOrderForm = new ComposeOrderForm(id_garcon, this.connection );
-            composeOrderForm.Show();
-            
+                MessageBox.Show("Обслуговує офіціант: "+ row.Cells[1].Value.ToString());
+                 
+                composeOrderForm = new ComposeOrderForm(id_garcon, this.connection);
+                composeOrderForm.Show();
+            }else MessageBox.Show("Оберіть спочатку офіціанта");
+
+
         }
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
@@ -244,6 +281,36 @@ namespace CafeDatabaseApplication
 
         private void chart1_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void toolStripButton8_Click(object sender, EventArgs e)
+        {
+            dataGridView1.EndEdit();
+            cafesTableAdapter.Update(this.cafedatabaseDataSet);
+            //MessageBox.Show("Updated");
+            //DataBind();
+
+            /*
+            SqlCommandBuilder builder = new SqlCommandBuilder(adapters["cafes"]);
+            adapters["cafes"].UpdateCommand = builder.GetUpdateCommand();
+            adapters["cafes"].Update(dataSets.Tables["cafes"]);
+            */
+        }
+
+        private void garconDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {/*
+            int rowIndex = e.RowIndex;
+            DataGridViewRow row = this.garconDataGridView.Rows[rowIndex];
+            int id_garcon = 1;
+            String id_g_str = row.Cells[1].Value.ToString();
+            id_garcon = Convert.ToInt32(id_g_str);
+
+            MessageBox.Show("Happy garcon: " + id_garcon);
+
+            composeOrderForm = new ComposeOrderForm(id_garcon, this.connection);
+            composeOrderForm.Show();
+            */
 
         }
     }//[end] class cafeDatabaseMainForm
