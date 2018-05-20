@@ -20,3 +20,14 @@ E:\Code\CS\cafeDatabase\CafeDatabaseApplication\obj\Debug\CafeDatabaseApplicatio
 \\VBOXSVR\_share\Code\CS\cafeDatabase\CafeDatabaseApplication\obj\Debug\CafeDatabaseApplication.csproj.CoreCompileInputs.cache
 \\VBOXSVR\_share\Code\CS\cafeDatabase\CafeDatabaseApplication\obj\Debug\CafeDatabaseApplication.exe
 \\VBOXSVR\_share\Code\CS\cafeDatabase\CafeDatabaseApplication\obj\Debug\CafeDatabaseApplication.pdb
+C:\Users\Кристина\cafeDatabase\CafeDatabaseApplication\bin\Debug\CafeDatabaseApplication.exe.config
+C:\Users\Кристина\cafeDatabase\CafeDatabaseApplication\bin\Debug\CafeDatabaseApplication.exe
+C:\Users\Кристина\cafeDatabase\CafeDatabaseApplication\bin\Debug\CafeDatabaseApplication.pdb
+C:\Users\Кристина\cafeDatabase\CafeDatabaseApplication\obj\Debug\CafeDatabaseApplication.csprojResolveAssemblyReference.cache
+C:\Users\Кристина\cafeDatabase\CafeDatabaseApplication\obj\Debug\CafeDatabaseApplication.ComposeOrderForm.resources
+C:\Users\Кристина\cafeDatabase\CafeDatabaseApplication\obj\Debug\CafeDatabaseApplication.DatabaseMainForm.resources
+C:\Users\Кристина\cafeDatabase\CafeDatabaseApplication\obj\Debug\CafeDatabaseApplication.Properties.Resources.resources
+C:\Users\Кристина\cafeDatabase\CafeDatabaseApplication\obj\Debug\CafeDatabaseApplication.csproj.GenerateResource.cache
+C:\Users\Кристина\cafeDatabase\CafeDatabaseApplication\obj\Debug\CafeDatabaseApplication.csproj.CoreCompileInputs.cache
+C:\Users\Кристина\cafeDatabase\CafeDatabaseApplication\obj\Debug\CafeDatabaseApplication.exe
+C:\Users\Кристина\cafeDatabase\CafeDatabaseApplication\obj\Debug\CafeDatabaseApplication.pdb

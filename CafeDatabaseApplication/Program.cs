@@ -10,8 +10,13 @@ namespace CafeDatabaseApplication
         [STAThread]
         static void Main()
         {
-            SqlConnection connection = new SqlConnection("Data Source=den1.mssql3.gear.host;Initial Catalog=cafedatabase;" +
-            "Persist Security Info=True;User ID=cafedatabase;Password=Sl18~Q43eq!s");
+            //  SqlConnection connection = new SqlConnection("Data Source=den1.mssql3.gear.host;Initial Catalog=cafedatabase;" +
+            // "Persist Security Info=True;User ID=cafedatabase;Password=Sl18~Q43eq!s");
+            SqlConnection connection = new SqlConnection("Server = DESKTOP-JSJDM0T\\SQLEXPRESS01; Database = cafedatabase; Trusted_Connection = True;");
+
+            
+
+
             try
             {
                 connection.Open();                

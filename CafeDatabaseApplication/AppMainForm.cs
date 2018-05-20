@@ -63,7 +63,9 @@ namespace CafeDatabaseApplication
 
         private void cafeDatabaseMainForm_Load(object sender, EventArgs e)
         {
-           
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "cafedatabaseDataSet.cafes". При необходимости она может быть перемещена или удалена.
+            this.cafesTableAdapter.Fill(this.cafedatabaseDataSet.cafes);
+
             bindingSource1.DataSource = dataSets.Tables["cafes"];
             cafeDataGridView.DataSource = bindingSource1;
             bindingNavigator1.BindingSource = bindingSource1;
@@ -77,7 +79,7 @@ namespace CafeDatabaseApplication
             bindingNavigator3.BindingSource = bindingSource3;
 
 
-            SqlConnection con = new SqlConnection("server = MUNESH;Database=datastore;UID=sa;Password=123;");
+        
             SqlCommand cmd = new SqlCommand("SELECT title, price FROM assortiments ORDER BY price DESC", this.connection);
             SqlDataReader datareader;
             try{
@@ -85,11 +87,27 @@ namespace CafeDatabaseApplication
                 while (datareader.Read()){
                     this.chart1.Series["AssortimentPrice"].Points.AddXY( datareader.GetString(0), datareader.GetDouble(1) );
                 }
+                datareader.Close();
             }catch(Exception ex){
                 MessageBox.Show(ex.Message);
             }
+            
 
-
+            SqlCommand cmd2 = new SqlCommand("SELECT c.name, COUNT(ord.id) FROM garcons c, orders ord WHERE c.id = ord.id_garcon GROUP BY c.name", this.connection);
+            SqlDataReader datareader2;
+            try
+            {
+                datareader2 = cmd2.ExecuteReader();
+                while (datareader2.Read())
+                {
+                    this.chart2.Series["OrderNum"].Points.AddXY(datareader2.GetString(0), datareader2.GetInt32(1));
+                }
+                datareader2.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
             /*
             // Create a map control.
@@ -125,8 +143,8 @@ namespace CafeDatabaseApplication
           
             
             int id_garcon = 1;
-            String id_g_str = this.garconDataGridView.CurrentRow.Cells[0].ToString();
-            MessageBox.Show("Happy garcon: <" + id_g_str+">");
+            String id_g_str = this.garconDataGridView.CurrentRow.Cells[1].ToString();
+            //MessageBox.Show("Happy garcon: <" + id_g_str+">");
             id_garcon = Convert.ToInt32("2");
 
            // MessageBox.Show("Happy garcon: " + id_garcon);
@@ -222,6 +240,11 @@ namespace CafeDatabaseApplication
             /*
  * Order Products
  * */
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
         }
     }//[end] class cafeDatabaseMainForm
 }//[end] namespace CafeDatabaseApplication

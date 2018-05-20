@@ -1,0 +1,15 @@
+﻿INSERT INTO ordered_assortiments (id_order, id_assortiment, quantity) VALUES (1, 1, 2);
+INSERT INTO ordered_assortiments (id_order, id_assortiment, quantity) VALUES (2, 1, 2);
+INSERT INTO ordered_assortiments (id_order, id_assortiment, quantity) VALUES (3, 1, 2);
+INSERT INTO ordered_assortiments (id_order, id_assortiment, quantity) VALUES (4, 1, 2);
+INSERT INTO ordered_assortiments (id_order, id_assortiment, quantity) VALUES (5, 1, 2);
+INSERT INTO ordered_assortiments (id_order, id_assortiment, quantity) VALUES (6, 2, 2);
+INSERT INTO ordered_assortiments (id_order, id_assortiment, quantity) VALUES (7, 3, 2);
+INSERT INTO ordered_assortiments (id_order, id_assortiment, quantity) VALUES (8, 4, 2);
+INSERT INTO ordered_assortiments (id_order, id_assortiment, quantity) VALUES (10, 1, 2);
+INSERT INTO ordered_assortiments (id_order, id_assortiment, quantity) VALUES (9, 1, 2);
+INSERT INTO ordered_assortiments (id_order, id_assortiment, quantity) VALUES (11, 1, 2);
+INSERT INTO ordered_assortiments (id_order, id_assortiment, quantity) VALUES (12, 1, 2);
+INSERT INTO ordered_assortiments (id_order, id_assortiment, quantity) VALUES (5, 3, 2);
+INSERT INTO ordered_assortiments (id_order, id_assortiment, quantity) VALUES (6, 4, 2);
+INSERT INTO ordered_assortiments (id_order, id_assortiment, quantity) VALUES (7, 3, 2);

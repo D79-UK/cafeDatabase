@@ -15,7 +15,8 @@ namespace CafeDatabaseApplication
     public partial class ComposeOrderForm : Form
     {
         private int id_garcon;
-        
+        private int id_order;
+
         private SqlConnection connection = null;
         private Dictionary<string, SqlDataAdapter> adapters;
         private DataSet dataSets;
@@ -59,6 +60,28 @@ namespace CafeDatabaseApplication
             }
             
             InitializeComponent();
+
+            try
+            {
+                SqlCommand cmd_ins = new SqlCommand("INSERT INTO orders (id_garcon, id_discount) VALUES (@gar, @dis)", this.connection);
+                SqlParameter par1 = new SqlParameter("@gar", SqlDbType.Int);
+                par1.Value = this.id_garcon;
+                cmd_ins.Parameters.Add(par1);
+
+                SqlParameter par2 = new SqlParameter("@dis", SqlDbType.Int);
+                par2.Value = 1;
+                cmd_ins.Parameters.Add(par2);
+
+                this.id_order = cmd_ins.ExecuteNonQuery();
+                MessageBox.Show("id order : " + this.id_order);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to insert into orders : " + ex.Message);
+            }
+
+
+
 
             try
             {
